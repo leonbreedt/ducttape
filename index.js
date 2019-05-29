@@ -414,7 +414,7 @@ function executeRequest(req, environment, chain, groupName, is_retry) {
         .then((response) => {
             const responseMimeType = response.headers['content-type']
             const responseLength = response.headers['content-length']
-            const isJSONResponse = responseMimeType === 'application/json'
+            const isJSONResponse = responseMimeType.startsWith('application/json')
             const isTextResponse = responseMimeType.startsWith('text/')
             const loggableResponseBody = isJSONResponse
                 ? minify(response.body).white.dim
